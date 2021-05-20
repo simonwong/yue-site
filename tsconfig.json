@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "allowJs": true,
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  },
+  "include": [
+    "**/*.js",
+    "**/*.ts",
+    "**/*.jsx",
+    "**/*.d.ts",
+    "**/*.tsx"
+  ],
+}
