@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Yue`,
+    title: `YUE`,
     description: `个人博客，笔记，生活记录.`,
     author: `Simon`,
   },
@@ -39,7 +39,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-gatsby-cloud`,

@@ -16,6 +16,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <Seo title="Home" />
+      <h2>哎呦，你来啦</h2>
       {/* <h1>Hi people</h1>
       <StaticImage
         src="../images/gatsby-astronaut.png"
@@ -41,8 +42,8 @@ const IndexPage = ({ data }) => {
         background="transparent"
         speed="1"
         style={{
-          width: '100%',
-          height: '100%',
+          width: '300px',
+          height: '300px',
         }}
         loop
         autoplay

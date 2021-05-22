@@ -40,11 +40,7 @@ const Layout = ({ children }) => {
           }}
         >
           © 2018 - {new Date().getFullYear()},{' '}
-          <a
-            href="http://www.beian.miit.gov.cn/"
-            target="__blank"
-            rel="noopener"
-          >
+          <a href="https://beian.miit.gov.cn/" target="__blank" rel="noopener">
             浙ICP备18056882号-1
           </a>
           , Built with
