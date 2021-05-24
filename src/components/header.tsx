@@ -6,23 +6,12 @@ const Header = ({ siteTitle }) => (
   <header
     style={{
       background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
     }}
+    className="mb-6"
   >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            textDecoration: `none`,
-          }}
-        >
+    <div className="m-auto py-6 px-4 max-w-5xl">
+      <h1 className="m-0">
+        <Link to="/" className="no-underline">
           {siteTitle}
         </Link>
       </h1>

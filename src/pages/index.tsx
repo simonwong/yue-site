@@ -37,18 +37,6 @@ const IndexPage = ({ data }) => {
           </Link>
         </div>
       ))} */}
-      <lottie-player
-        src="https://assets7.lottiefiles.com/packages/lf20_RWZde1.json"
-        background="transparent"
-        speed="1"
-        style={{
-          width: '300px',
-          height: '300px',
-        }}
-        loop
-        autoplay
-      />
-      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" />
     </Layout>
   )
 }
