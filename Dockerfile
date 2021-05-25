@@ -5,7 +5,7 @@ WORKDIR /code
 COPY package.json /code
 COPY yarn.lock /code
 
-RUN yarn install --frozen-lockfile
+RUN yarn install --frozen-lockfile --registry https://registry.npm.taobao.org/
 
 COPY . /code
 
