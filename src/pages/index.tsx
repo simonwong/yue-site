@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 // import { StaticImage } from 'gatsby-plugin-image'
 
 import Layout from '../components/layout'
@@ -16,7 +16,6 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <Seo title="Home" />
-      <h2>哎呦，你来啦</h2>
       {/* <h1>Hi people</h1>
       <StaticImage
         src="../images/gatsby-astronaut.png"
@@ -26,17 +25,13 @@ const IndexPage = ({ data }) => {
         alt="A Gatsby astronaut"
         style={{ marginBottom: `1.45rem` }}
       /> */}
-      {/* <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+      <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <div key={node.id}>
-          <Link to={node.fields.slug}>
-            <h3>
-              {node.frontmatter.title} <span>— {node.frontmatter.date}</span>
-            </h3>
-            <p>{node.excerpt}</p>
-          </Link>
+          <span className="mr-2">{node.frontmatter.date}</span>
+          <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
         </div>
-      ))} */}
+      ))}
     </Layout>
   )
 }
@@ -52,12 +47,11 @@ export const query = graphql`
           id
           frontmatter {
             title
-            date(formatString: "DD MMMM, YYYY")
+            date(formatString: "YYYY-MM-DD")
           }
           fields {
             slug
           }
-          excerpt
         }
       }
     }

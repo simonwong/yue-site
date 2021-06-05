@@ -6,7 +6,7 @@ const PlayerAny = () => (
       src="https://assets7.lottiefiles.com/packages/lf20_RWZde1.json"
       background="transparent"
       speed="1"
-      class="w-60 h-60"
+      class="w-20 h-20"
       loop
       autoplay
     />

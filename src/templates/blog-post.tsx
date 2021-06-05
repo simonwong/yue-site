@@ -7,10 +7,20 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <div>
-        <h1>{post.frontmatter.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      </div>
+      <article
+        className="blog-post"
+        itemScope
+        itemType="http://schema.org/Article"
+      >
+        <header>
+          <h1 itemProp="headline">{post.frontmatter.title}</h1>
+          <p>{post.frontmatter.date}</p>
+        </header>
+        <section
+          dangerouslySetInnerHTML={{ __html: post.html }}
+          itemProp="articleBody"
+        />
+      </article>
     </Layout>
   )
 }
