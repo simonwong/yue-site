@@ -1,5 +1,3 @@
-const HomePage = () => (
-  <div className="text-3xl font-bold underline">HomePage</div>
-)
+const HomePage = () => <div className="text-center">Yue Site</div>
 
 export default HomePage
