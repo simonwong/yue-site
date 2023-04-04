@@ -4,6 +4,5 @@ module.exports = {
     project: './tsconfig.json',
   },
   rules: {
-    // custom rules
   },
 }
