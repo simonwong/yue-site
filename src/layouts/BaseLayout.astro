@@ -1,0 +1,54 @@
+---
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import RainbowCover from '../components/RainbowCover.astro'
+import '../styles/global.css'
+
+const { pageTitle } = Astro.props
+---
+
+<script is:inline>
+  const getThemePreference = () => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme')
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light'
+  }
+  const isDark = getThemePreference() === 'dark'
+  document.documentElement.classList[isDark ? 'add' : 'remove']('dark')
+
+  if (typeof localStorage !== 'undefined') {
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains('dark')
+      localStorage.setItem('theme', isDark ? 'dark' : 'light')
+    })
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
+  }
+</script>
+
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body
+    class="relative h-full min-h-full bg-gray-25 font-sans dark:bg-gray-975"
+  >
+    <div class="px-4 relative min-h-full overflow-hidden">
+      <!-- <RainbowCover /> -->
+      <Header />
+      <main class="mx-auto max-w-4xl py-12 min-full-content">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

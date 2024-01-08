@@ -1,10 +1,9 @@
 ---
-title: "TypeScript、Rollup 搭建工具库"
-date: "2019-12-31"
+layout: ../../layouts/MarkdownPostLayout.astro
+title: 'TypeScript、Rollup 搭建工具库'
+pubDate: '2019-12-31'
+tags: ['typescript', 'rollup']
 ---
-
-![](http://file.wangsijie.top/blog/20191226183850.png)
-
 
 ## 前景提要
 
@@ -16,8 +15,6 @@ date: "2019-12-31"
 - 自动化构建
 - 支持自动生成 changlog
 - 代码通过 lint 和测试后才能提交、发布
-
-
 
 ### 涉及的库
 
@@ -37,8 +34,6 @@ date: "2019-12-31"
 yarn add -D typescript
 ```
 
-
-
 创建 `src` 目录，入口文件，以及 ts 的配置文件
 
 ```
@@ -49,9 +44,7 @@ fly-helper
  |- tsconfig.json
 ```
 
-
-
-###  配置 tsconfig.json
+### 配置 tsconfig.json
 
 ```json
 /*  tsconfig.json */
@@ -59,10 +52,7 @@ fly-helper
   "compilerOptions": {
     /* 基础配置 */
     "target": "esnext",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     "removeComments": false,
     "declaration": true,
     "sourceMap": true,
@@ -78,19 +68,15 @@ fly-helper
     "moduleResolution": "node",
     "resolveJsonModule": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
 ```
 
-
-
 ### 参考 commit
 
- [1892d4](https://github.com/simonwong/fly-helper/commit/1892d46aa6131806f720581737af60ea0c2fd4c2)
+[1892d4](https://github.com/simonwong/fly-helper/commit/1892d46aa6131806f720581737af60ea0c2fd4c2)
 
-Ps：commit 中还增加了 .editorconfig  ，来约束同学们的代码格式
+Ps：commit 中还增加了 .editorconfig ，来约束同学们的代码格式
 
 ## 配置 eslint
 
@@ -101,10 +87,8 @@ TypeScirpt 已经全面采用 ESLint 作为代码检查 [The future of TypeScrip
 ### 安装
 
 ```shell
-yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin 
+yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
 ```
-
-
 
 ### 目录结构
 
@@ -115,13 +99,9 @@ fly-helper
  |- tsconfig.eslint.json
 ```
 
-
-
 ### Ps
 
 tsconfig.eslint.json 我们根目录中增加了一个 tsconfig 文件，它将用于 `eslintrc.parserOptions.project` ，由于该配置要求 incude 每个 ts、js 文件。而我们仅需要打包 src 目录下的代码，所以增加了该配置文件。
-
-
 
 如果 `eslintrc.parserOptions.project` 配置为 tsconfig.json 。src 文件以外的 ts、js 文件都会报错。
 
@@ -135,8 +115,6 @@ The file must be included in at least one of the projects provided.eslint
 
 [issus: Parsing error: "parserOptions.project"...](https://github.com/typescript-eslint/typescript-eslint/issues/967)
 
-
-
 ### 配置 tsconfig.eslint.json
 
 ```json
@@ -144,50 +122,41 @@ The file must be included in at least one of the projects provided.eslint
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   },
-  "include": [
-    "**/*.ts",
-    "**/*.js"
-  ]
+  "include": ["**/*.ts", "**/*.js"]
 }
 ```
-
-
 
 ### 配置 .eslintrc.js
 
 ```javascript
 // .eslintrc.js
 const eslintrc = {
-    parser: '@typescript-eslint/parser', // 使用 ts 解析器
-    extends: [
-        'eslint:recommended', // eslint 推荐规则
-        'plugin:@typescript-eslint/recommended', // ts 推荐规则
-    ],
-    plugins: [
-        '@typescript-eslint',
-    ],
-    env: {
-        browser: true,
-        node: true,
-        es6: true,
+  parser: '@typescript-eslint/parser', // 使用 ts 解析器
+  extends: [
+    'eslint:recommended', // eslint 推荐规则
+    'plugin:@typescript-eslint/recommended', // ts 推荐规则
+  ],
+  plugins: ['@typescript-eslint'],
+  env: {
+    browser: true,
+    node: true,
+    es6: true,
+  },
+  parserOptions: {
+    project: './tsconfig.eslint.json',
+    ecmaVersion: 2019,
+    sourceType: 'module',
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true,
     },
-    parserOptions: {
-        project: './tsconfig.eslint.json',
-        ecmaVersion: 2019,
-        sourceType: 'module',
-        ecmaFeatures: {
-          experimentalObjectRestSpread: true
-        }
-    },
-    rules: {}, // 自定义
+  },
+  rules: {}, // 自定义
 }
 
 module.exports = eslintrc
 ```
-
-
 
 ### 参考 commit
 
@@ -196,8 +165,6 @@ module.exports = eslintrc
 ## 配置 rollup
 
 vue、react 等许多流行库都在使用 Rollup.js ，就不多介绍，直接看 [官网](https://www.rollupjs.com/) 吧🤯
-
-
 
 ### 安装
 
@@ -213,8 +180,6 @@ yarn add -D rollup rollup-plugin-babel rollup-plugin-commonjs rollup-plugin-esli
 yarn add -D @babel/preset-env
 ```
 
-
-
 ### 目录结构
 
 ```
@@ -225,8 +190,6 @@ fly-helper
  |- .babelrc
  |- rollup.config.ts
 ```
-
-
 
 ### 配置 .babelrc
 
@@ -244,8 +207,6 @@ fly-helper
   ]
 }
 ```
-
-
 
 ### 配置 rollup.config.ts
 
@@ -310,10 +271,7 @@ const rollupConfig: RollupOptions = {
       // 只转换源代码，不运行外部依赖
       exclude: 'node_modules/**',
       // babel 默认不支持 ts 需要手动添加
-      extensions: [
-        ...DEFAULT_EXTENSIONS,
-        '.ts',
-      ],
+      extensions: [...DEFAULT_EXTENSIONS, '.ts'],
     }),
   ],
 }
@@ -321,14 +279,10 @@ const rollupConfig: RollupOptions = {
 export default rollupConfig
 ```
 
-
-
 一些注意事项：
 
 - plugins 必须有顺序的使用
 - external 来设置三方库为外部模块，否则也会被打包进去，变得非常大哦
-
-
 
 ### 配置声明文件
 
@@ -339,14 +293,12 @@ declare module 'rollup-plugin-eslint'
 
 由于部分插件还没有 @types 库，所以我们手动添加声明文件
 
-
-
 ### 试一下
 
 我们在 index.ts 文件下，随意加入一个方法
 
 ```typescript
-export default function myFirstFunc (str: string) {
+export default function myFirstFunc(str: string) {
   return `hello ${str}`
 }
 ```
@@ -357,13 +309,9 @@ export default function myFirstFunc (str: string) {
 
 就生成了 index.js 和 index.esm.js 文件。分别对应着 commonjs 规范和 es 规范的文件。rollup 可是大力推行 es 规范啊，然后我们很多三方库都仍旧使用 commonjs 规范，为了兼容，我们两种规范都生成。
 
-
-
 由于使用了 ts ，可以很方便的实现快速补全的需求，按照上面的例子，项目中使用这个包后，vscode 上输入就会有如下效果
 
 ![](http://file.wangsijie.top/blog/20191226114541.png)
-
-
 
 ### 参考 commit
 
@@ -388,8 +336,6 @@ fly-helper
  |- jest.config.js
 ```
 
-
-
 ### 配置 jest.config.js
 
 ```javascript
@@ -399,8 +345,6 @@ module.exports = {
   testEnvironment: 'node',
 }
 ```
-
-
 
 ### 动手写个 test 吧
 
@@ -422,8 +366,6 @@ describe('validate:', () => {
 })
 ```
 
-
-
 ### 再配置 eslint
 
 ```javascript
@@ -441,15 +383,13 @@ const eslintrc = {
 }
 ```
 
-
-
 ### 增加 package.json scripts
 
 ```
 "test": "jest --coverage --verbose -u"
 ```
 
-- coverage  输出测试覆盖率
+- coverage 输出测试覆盖率
 - verbose 层次显示测试套件中每个测试的结果，会看着更加直观啦
 
 ### 试一下
@@ -462,13 +402,9 @@ yarn test
 
 ![](http://file.wangsijie.top/blog/20191226154137.png)
 
-
-
 ### 参考 commit
 
 [9bbe5b](https://github.com/simonwong/fly-helper/commit/9bbe5b1585ab709b8e0c1ad0ff8243b7c43b7bd7)
-
-
 
 ## 配置 @microsoft/api-extractor
 
@@ -482,8 +418,6 @@ yarn test
 yarn add -D @microsoft/api-extractor
 ```
 
-
-
 ### 配置 api-extractor.json
 
 ```json
@@ -491,7 +425,7 @@ yarn add -D @microsoft/api-extractor
 {
   "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
   "mainEntryPointFilePath": "./lib/index.d.ts",
-  "bundledPackages": [ ],
+  "bundledPackages": [],
   "dtsRollup": {
     "enabled": true,
     "untrimmedFilePath": "./lib/index.d.ts"
@@ -499,15 +433,11 @@ yarn add -D @microsoft/api-extractor
 }
 ```
 
-
-
 ### 增加 package.json scripts
 
 ```
 "api": "api-extractor run",
 ```
-
-
 
 ### 尝试一下
 
@@ -515,7 +445,7 @@ yarn add -D @microsoft/api-extractor
 
 加入[ts doc](https://github.com/microsoft/tsdoc) 风格注释
 
-```typescript
+````typescript
 /**
  * 返回 hello 开头的字符串
  * @param str - input string
@@ -528,7 +458,7 @@ yarn add -D @microsoft/api-extractor
  * @beta
  * @author ziming
  */
-```
+````
 
 在使用的该方法的时候就会有提示啦
 
@@ -536,23 +466,17 @@ yarn add -D @microsoft/api-extractor
 
 执行后，会发现 声明都合在 index.d.ts 上啦。然后要把多余的给删除掉，后面改成自动删除它😕
 
-
-
 😤还有一个 temp 文件夹，咱们配置一下 gitignore 不然它提交。tsdoc-metadata.json 可以暂时不管它，可以删除掉。
 
 后面配置 package.json 的 typing 会自动更改存放位置
 
 ### 参考 commit
 
- [4e4b3d](https://github.com/simonwong/fly-helper/commit/4e4b3df2febf9f32f17e4bb06c3d734508e10b2c)
-
-
+[4e4b3d](https://github.com/simonwong/fly-helper/commit/4e4b3df2febf9f32f17e4bb06c3d734508e10b2c)
 
 之后使用方法就有这样的提示，是不是会用的很方便嘞😉
 
 ![](http://file.wangsijie.top/blog/20191226164824.png)
-
-
 
 ## gulp 自动化构建
 
@@ -561,8 +485,6 @@ yarn add -D @microsoft/api-extractor
 ```shell
 yarn add -D gulp @types/gulp fs-extra @types/fs-extra @types/node ts-node chalk
 ```
-
-
 
 ### 配置 package.json
 
@@ -577,8 +499,6 @@ yarn add -D gulp @types/gulp fs-extra @types/fs-extra @types/node ts-node chalk
   }
 ```
 
-
-
 ### 配置 gulpfile
 
 我们思考一下构建流程🤔
@@ -588,24 +508,20 @@ yarn add -D gulp @types/gulp fs-extra @types/fs-extra @types/node ts-node chalk
 3. api-extractor 生成统一的声明文件，然后 删除多余的声明文件
 4. 完成
 
-
-
 我们一步一步来
 
 ```typescript
 // 删除 lib 文件
-const clearLibFile: TaskFunc = async (cb) => {
+const clearLibFile: TaskFunc = async cb => {
   fse.removeSync(paths.lib)
   log.progress('Deleted lib file')
   cb()
 }
 ```
 
-
-
 ```typescript
 // rollup 打包
-const buildByRollup: TaskFunc = async (cb) => {
+const buildByRollup: TaskFunc = async cb => {
   const inputOptions = {
     input: rollupConfig.input,
     external: rollupConfig.external,
@@ -616,7 +532,7 @@ const buildByRollup: TaskFunc = async (cb) => {
 
   // 写入需要遍历输出配置
   if (Array.isArray(outOptions)) {
-    outOptions.forEach(async (outOption) => {
+    outOptions.forEach(async outOption => {
       await bundle.write(outOption)
     })
     cb()
@@ -625,16 +541,20 @@ const buildByRollup: TaskFunc = async (cb) => {
 }
 ```
 
-
-
 ```typescript
 // api-extractor 整理 .d.ts 文件
-const apiExtractorGenerate: TaskFunc = async (cb) => {
-  const apiExtractorJsonPath: string = path.join(__dirname, './api-extractor.json')
+const apiExtractorGenerate: TaskFunc = async cb => {
+  const apiExtractorJsonPath: string = path.join(
+    __dirname,
+    './api-extractor.json',
+  )
   // 加载并解析 api-extractor.json 文件
-  const extractorConfig: ExtractorConfig = await ExtractorConfig.loadFileAndPrepare(apiExtractorJsonPath)
+  const extractorConfig: ExtractorConfig =
+    await ExtractorConfig.loadFileAndPrepare(apiExtractorJsonPath)
   // 判断是否存在 index.d.ts 文件，这里必须异步先访问一边，不然后面找不到会报错
-  const isExist: boolean = await fse.pathExists(extractorConfig.mainEntryPointFilePath)
+  const isExist: boolean = await fse.pathExists(
+    extractorConfig.mainEntryPointFilePath,
+  )
 
   if (!isExist) {
     log.error('API Extractor not find index.d.ts')
@@ -642,11 +562,14 @@ const apiExtractorGenerate: TaskFunc = async (cb) => {
   }
 
   // 调用 API
-  const extractorResult: ExtractorResult = await Extractor.invoke(extractorConfig, {
-    localBuild: true,
-    // 在输出中显示信息
-    showVerboseMessages: true,
-  })
+  const extractorResult: ExtractorResult = await Extractor.invoke(
+    extractorConfig,
+    {
+      localBuild: true,
+      // 在输出中显示信息
+      showVerboseMessages: true,
+    },
+  )
 
   if (extractorResult.succeeded) {
     // 删除多余的 .d.ts 文件
@@ -659,31 +582,32 @@ const apiExtractorGenerate: TaskFunc = async (cb) => {
     log.progress('API Extractor completed successfully')
     cb()
   } else {
-    log.error(`API Extractor completed with ${extractorResult.errorCount} errors`
-      + ` and ${extractorResult.warningCount} warnings`)
+    log.error(
+      `API Extractor completed with ${extractorResult.errorCount} errors` +
+        ` and ${extractorResult.warningCount} warnings`,
+    )
   }
 }
 ```
 
-
-
 ```typescript
 // 完成
-const complete: TaskFunc = (cb) => {
+const complete: TaskFunc = cb => {
   log.progress('---- end ----')
   cb()
 }
 ```
 
-
-
 然后用一个 build 方法，将他们按顺序合起来
 
 ```typescript
-export const build = series(clearLibFile, buildByRollup, apiExtractorGenerate, complete)
+export const build = series(
+  clearLibFile,
+  buildByRollup,
+  apiExtractorGenerate,
+  complete,
+)
 ```
-
-
 
 ### 尝试一下
 
@@ -693,13 +617,9 @@ yarn build
 
 溜去 lib 文件下瞅瞅🧐，美滋滋。
 
-
-
 ### 参考 commit
 
 [a5370c](https://github.com/simonwong/fly-helper/commit/a5370cb0c1e334d271439916648bc98586b16f05)
-
-
 
 ## changelog 自动生成
 
@@ -709,8 +629,6 @@ yarn build
 yarn add -D conventional-changelog-cli
 ```
 
-
-
 ### 配置 gulpfile
 
 ```typescript
@@ -718,7 +636,7 @@ yarn add -D conventional-changelog-cli
 import conventionalChangelog from 'conventional-changelog'
 
 // 自定义生成 changelog
-export const changelog: TaskFunc = async (cb) => {
+export const changelog: TaskFunc = async cb => {
   const changelogPath: string = path.join(paths.root, 'CHANGELOG.md')
   // 对命令 conventional-changelog -p angular -i CHANGELOG.md -w -r 0
   const changelogPipe = await conventionalChangelog({
@@ -728,7 +646,7 @@ export const changelog: TaskFunc = async (cb) => {
   changelogPipe.setEncoding('utf8')
 
   const resultArray = ['# 工具库更新日志\n\n']
-  changelogPipe.on('data', (chunk) => {
+  changelogPipe.on('data', chunk => {
     // 原来的 commits 路径是进入提交列表
     chunk = chunk.replace(/\/commits\//g, '/commit/')
     resultArray.push(chunk)
@@ -738,7 +656,6 @@ export const changelog: TaskFunc = async (cb) => {
     cb()
   })
 }
-
 ```
 
 惊喜的发现 conventional-changelog 木得 @types 库，继续手动添加
@@ -748,8 +665,6 @@ export const changelog: TaskFunc = async (cb) => {
 
 declare module 'conventional-changelog'
 ```
-
-
 
 ### 参考 commit
 
@@ -762,8 +677,6 @@ declare module 'conventional-changelog'
 - 非常注意 commit 格式，格式采用 [angular commit 规范](https://github.com/angular/angular/blob/master/CONTRIBUTING.md)，会识别 feat 和 fix 开头的 commit ，然后自动生成
 - 每次更改需要先升级 version 再去生成。后面会有例子
 
-
-
 ## 优化开发流程
 
 ### 安装
@@ -771,8 +684,6 @@ declare module 'conventional-changelog'
 ```shell
 yarn add -D husky lint-staged
 ```
-
-
 
 ### package.json
 
@@ -792,11 +703,7 @@ yarn add -D husky lint-staged
   }
 ```
 
-
-
 之后提交代码都会先 lint 验证，再 jest 测试通过，才可以提交。规范团队协作的代码规范
-
-
 
 ## 优化发布流程
 
@@ -823,8 +730,6 @@ prepublishOnly 可以在 publish 的时候，先 lint 验证， 再 jest 测试 
 
 至此，我们已经实现了全部需求。🥳
 
-
-
 ### 参考 commit
 
 [7f343f](https://github.com/simonwong/fly-helper/commit/7f343fda98ce31bf055184ac60932def8cf81367)
@@ -833,27 +738,23 @@ prepublishOnly 可以在 publish 的时候，先 lint 验证， 再 jest 测试 
 
 - 我们假装现在开始写第一个方法。我删除了上面的例子，增加了一个 calculate.ts
 
-    请看[仓库地址 release/1.0.0 分支](https://github.com/simonwong/fly-helper/tree/release/1.0.0)
+  请看[仓库地址 release/1.0.0 分支](https://github.com/simonwong/fly-helper/tree/release/1.0.0)
 
 - 然后我们提交这次更改，commit 内容为 `feat: 新增 calculateOneAddOne 计算 1 + 1 方法`
 
 - 执行 npm version major 升级主版本号 1.0.0。
 
-     [更多升级版本的操作](https://simonwong.github.io/advanced/npm.html#version)
+  [更多升级版本的操作](https://simonwong.github.io/advanced/npm.html#version)
 
-    版本规范参考 [语义化版本 2.0.0](https://semver.org/lang/zh-CN/)
+  版本规范参考 [语义化版本 2.0.0](https://semver.org/lang/zh-CN/)
 
 - `yarn changelog` 看看你的 changelog.md 就自动生成了🥳
 
 ![](http://file.wangsijie.top/blog/20191227100915.png)
 
-
-
 ### 仓库地址
 
 [fly-helper/release/1.0.0](https://github.com/simonwong/fly-helper/tree/release/1.0.0)
-
-
 
 ## 参考
 

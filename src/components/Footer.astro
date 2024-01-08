@@ -1,0 +1,17 @@
+---
+import { Separator } from "@/components/ui/separator";
+import { TypographyP } from "./ui/typography";
+
+const currentYear = new Date().getFullYear()
+---
+
+<footer
+  class="mx-auto max-w-4xl py-4"
+>
+  <Separator />
+  <div class="flex justify-center pt-4">
+    <TypographyP>
+      Copyright © 2019-{currentYear} Simon Wong.
+    </TypographyP>
+  </div>
+</footer>
