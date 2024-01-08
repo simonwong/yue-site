@@ -18,7 +18,7 @@ export function NavMenu({ menu }: NavMenuProps) {
     <NavigationMenu>
       <NavigationMenuList>
         {menu.map(item => (
-          <NavigationMenuItem>
+          <NavigationMenuItem key={item.href}>
             <NavigationMenuLink
               className={navigationMenuTriggerStyle()}
               key={item.href}

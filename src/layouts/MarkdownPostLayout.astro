@@ -1,19 +1,39 @@
 ---
 import { badgeVariants } from "@/components/ui/badge";
+import {
+Card
+} from "@/components/ui/card";
 import BaseLayout from './BaseLayout.astro';
-const { frontmatter } = Astro.props
+const { frontmatter, headings } = Astro.props
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
-  <h1>{frontmatter.title}</h1>
-  <p><em>{frontmatter.description}</em></p>
-  <p>{frontmatter.pubDate.slice(0, 10)}</p>
-  <div class="tags">
-    {
-      frontmatter.tags.map(tag => (
-        <a class={badgeVariants()} href={`/tags/${tag}`}>{tag}</a>
-      ))
-    }
+<BaseLayout pageTitle={frontmatter.title} mainClassName="flex justify-between">
+  <article class="prose dark:prose-invert prose-neutral">
+    <h1>{frontmatter.title}</h1>
+    <p><em>{frontmatter.description}</em></p>
+    <p>{frontmatter.pubDate.slice(0, 10)}</p>
+    <div class="tags">
+      {
+        frontmatter.tags.map(tag => (
+          <a class={badgeVariants()} href={`/tags/${tag}`}>{tag}</a>
+        ))
+      }
+    </div>
+    <slot />
+  </article>
+  <div class="hidden lg:block">
+    <Card className="sticky top-6">
+        <ul class="max-h-[80vh] overflow-y-auto p-2 text-xs">
+          {
+            headings.map(head => (
+            <li class={[head.depth === 3 && 'ml-6', head.depth === 2 && 'ml-2'].filter(Boolean).join(' ')}>
+              <a href={'#' + head.slug}>
+                {head.text}
+              </a>
+            </li>
+            ))
+          }
+        </ul>
+    </Card>
   </div>
-  <slot />
 </BaseLayout>
