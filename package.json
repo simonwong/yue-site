@@ -16,7 +16,13 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "lint": "prettier --write . --plugin=prettier-plugin-astro"
+    "lint": "prettier --write . --plugin=prettier-plugin-astro",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,jsx,tsx}": [
+      "prettier --write --plugin=prettier-plugin-astro"
+    ]
   },
   "dependencies": {
     "@astrojs/react": "^3.0.9",
@@ -44,6 +50,8 @@
     "node": ">=18"
   },
   "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
     "prettier-plugin-astro": "^0.12.3"
   }
