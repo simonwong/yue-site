@@ -1,5 +1,5 @@
 ---
-import { badgeVariants } from "@/components/ui/badge";
+import TagList from '@/components/TagList.astro';
 import {
 Card
 } from "@/components/ui/card";
@@ -12,13 +12,7 @@ const { frontmatter, headings } = Astro.props
     <h1>{frontmatter.title}</h1>
     <p><em>{frontmatter.description}</em></p>
     <p>{frontmatter.pubDate.slice(0, 10)}</p>
-    <div class="tags">
-      {
-        frontmatter.tags.map(tag => (
-          <a class={badgeVariants()} href={`/tags/${tag}`}>{tag}</a>
-        ))
-      }
-    </div>
+    <TagList tags={frontmatter.tags} />
     <slot />
   </article>
   <div class="hidden lg:block">
