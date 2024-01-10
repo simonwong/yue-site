@@ -2,7 +2,7 @@
 layout: ../../layouts/MarkdownPostLayout.astro
 title: 'TypeScript、Rollup 搭建工具库'
 pubDate: '2019-12-31'
-tags: ['typescript', 'rollup']
+tags: ['Typescript', 'Rollup']
 ---
 
 ## 前景提要

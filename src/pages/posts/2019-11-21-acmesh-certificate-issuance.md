@@ -2,7 +2,7 @@
 layout: ../../layouts/MarkdownPostLayout.astro
 title: 'acme.sh 证书颁发'
 pubDate: '2019-11-21'
-tags: []
+tags: ['HTTPS']
 ---
 
 ## 安装acme.sh
