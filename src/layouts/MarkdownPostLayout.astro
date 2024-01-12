@@ -1,9 +1,19 @@
 ---
+
 import TagList from '@/components/TagList.astro';
 import {
 Card
 } from "@/components/ui/card";
 import BaseLayout from './BaseLayout.astro';
+interface Props {
+  frontmatter: any
+  headings: {
+    depth: number
+    slug: string
+    text: string
+  }[]
+}
+
 const { frontmatter, headings } = Astro.props
 ---
 

@@ -4,7 +4,10 @@ import Footer from '../components/Footer.astro'
 import RainbowCover from '../components/RainbowCover.astro'
 import '../styles/global.css'
 import { cn } from '@/utils/utils'
-
+interface Props {
+  pageTitle: string
+  mainClassName?: string
+}
 const { pageTitle, mainClassName } = Astro.props
 ---
 

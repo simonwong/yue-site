@@ -1,8 +1,9 @@
 ---
+import type { Frontmatter } from '@/types/post'
 import BlogPost from '../components/BlogPost.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const allPosts = await Astro.glob('../pages/posts/*.md')
+const allPosts = await Astro.glob<Frontmatter>('../pages/posts/*.md')
 
 allPosts.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
 ---

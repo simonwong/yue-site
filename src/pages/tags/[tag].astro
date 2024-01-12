@@ -1,11 +1,16 @@
 ---
+import type { GetStaticPaths, InferGetStaticParamsType, InferGetStaticPropsType } from 'astro'
+import type { Frontmatter } from '@/types/post'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import BlogPost from '../../components/BlogPost.astro'
 
 export const prerender = true
 
-export async function getStaticPaths() {
-  const allPosts = await Astro.glob('../posts/*.md')
+export const getStaticPaths = (async () => {
+  const allPosts = (await Astro.glob<Frontmatter>('../posts/*.md')) as unknown as {
+    frontmatter: Frontmatter
+    url: string
+  }[]
 
   const uniqueTags = [
     ...new Set(allPosts.map(post => post.frontmatter.tags).flat()),
@@ -20,9 +25,12 @@ export async function getStaticPaths() {
       props: { posts: filteredPosts },
     }
   })
-}
+}) satisfies GetStaticPaths
 
-const { tag } = Astro.params
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { tag } = Astro.params as Params
 const { posts } = Astro.props
 ---
 
