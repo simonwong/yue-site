@@ -1,7 +1,7 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: '业务组件设计个人实践'
-pubDate: '2021-03-15'
+description: '个人实践向，业务组件库设计思路'
+pubDate: 2021-03-15
 tags: ['实践']
 ---
 

@@ -1,7 +1,7 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: 'TypeScript、Rollup 搭建工具库'
-pubDate: '2019-12-31'
+description: '利用 TypeScript、Rollup 等一系列工具搭建个人或团队的工具库'
+pubDate: 2019-12-31
 tags: ['Typescript', 'Rollup']
 ---
 

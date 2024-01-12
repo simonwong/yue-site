@@ -1,7 +1,7 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: 'commonjs与es模块的互操作'
-pubDate: '2022-03-15'
+description: 'commonjs 模块与 es 模块同时使用时互相引用存在的问题'
+pubDate: 2022-03-15
 tags: ['JavaScript']
 ---
 

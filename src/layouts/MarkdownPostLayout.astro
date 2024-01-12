@@ -1,31 +1,31 @@
 ---
-
+import type { CollectionEntry } from 'astro:content';
 import TagList from '@/components/TagList.astro';
 import {
 Card
 } from "@/components/ui/card";
 import BaseLayout from './BaseLayout.astro';
 interface Props {
-  frontmatter: any
-  headings: {
-    depth: number
-    slug: string
-    text: string
-  }[]
+  frontmatter: CollectionEntry<'posts'>['data']
+  // headings: {
+  //   depth: number
+  //   slug: string
+  //   text: string
+  // }[]
 }
 
-const { frontmatter, headings } = Astro.props
+const { frontmatter } = Astro.props
 ---
 
 <BaseLayout pageTitle={frontmatter.title} mainClassName="flex justify-between">
   <article class="prose dark:prose-invert prose-neutral">
     <h1>{frontmatter.title}</h1>
     <p><em>{frontmatter.description}</em></p>
-    <p>{frontmatter.pubDate.slice(0, 10)}</p>
+    <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
     <TagList tags={frontmatter.tags} />
     <slot />
   </article>
-  <div class="hidden lg:block">
+  <!-- <div class="hidden lg:block">
     <Card className="sticky top-6">
         <ul class="max-h-[80vh] overflow-y-auto p-2 text-xs">
           {
@@ -39,5 +39,5 @@ const { frontmatter, headings } = Astro.props
           }
         </ul>
     </Card>
-  </div>
+  </div> -->
 </BaseLayout>

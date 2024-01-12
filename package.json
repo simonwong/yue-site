@@ -14,7 +14,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "lint": "prettier --write . --plugin=prettier-plugin-astro",
     "prepare": "husky install"

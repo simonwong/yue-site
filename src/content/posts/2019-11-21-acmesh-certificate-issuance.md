@@ -1,7 +1,7 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: 'acme.sh 证书颁发'
-pubDate: '2019-11-21'
+description: '使用 acme.sh 主动颁发证书'
+pubDate: 2019-11-21
 tags: ['HTTPS']
 ---
 

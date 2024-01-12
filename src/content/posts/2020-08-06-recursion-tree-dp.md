@@ -1,7 +1,7 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: '从递归到树再到动态规划'
-pubDate: '2020-08-06'
+description: '通过递归、树一步步了解动态规划'
+pubDate: 2020-08-06
 tags: ['算法']
 ---
 
