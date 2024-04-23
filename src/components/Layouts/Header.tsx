@@ -1,7 +1,8 @@
 import { NavMenu } from '@/components/Layouts/NavMenu'
-import { Button, Navbar, NavbarBrand, NavbarContent, NavbarItem, Link } from '@nextui-org/react'
+import { Button, Navbar, NavbarBrand, NavbarContent } from '@nextui-org/react'
 import { Github } from 'lucide-react'
 import Image from 'next/image'
+import { ThemeSwitcher } from './ThemeSwitcher'
 
 interface HeaderProps {}
 
@@ -33,19 +34,8 @@ const Header: React.FC<HeaderProps> = () => {
             <Github size="18" />
           </a>
         </Button>
-        {/* <ModeToggle client:load /> */}
+        <ThemeSwitcher />
       </NavbarContent>
-      {/* <header
-        className="mx-auto flex max-w-4xl items-center justify-between gap-5 pt-8 font-medium text-gray-600"
-      >
-        <nav className="mix-blend-luminosity">
-        </nav>
-
-        <div className="flex">
-
-
-        </div>
-      </header> */}
     </Navbar>
   )
 }
