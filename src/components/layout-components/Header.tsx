@@ -1,7 +1,7 @@
 import React from 'react'
-import { Logo } from '@/components/Layouts/Logo'
-import { NavMenuList } from '@/components/Layouts/NavMenu'
-import { ThemeSwitcher } from '@/components/Layouts/ThemeSwitcher'
+import { Logo } from '@/components/layout-components/Logo'
+import { NavMenuList } from '@/components/layout-components/NavMenu'
+import { ThemeSwitcher } from '@/components/layout-components/ThemeSwitcher'
 import { Button, Navbar, NavbarBrand, NavbarContent, NavbarMenu, NavbarMenuToggle } from '@nextui-org/react'
 import { Github } from 'lucide-react'
 

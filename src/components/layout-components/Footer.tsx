@@ -1,4 +1,4 @@
-import { Logo } from '@/components/Layouts/Logo'
+import { Logo } from '@/components/layout-components/Logo'
 import { Spacer } from '@nextui-org/react'
 import { MailIcon } from 'lucide-react'
 
