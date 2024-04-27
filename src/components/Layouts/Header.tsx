@@ -1,9 +1,9 @@
 import React from 'react'
-import { Logo } from '@/components/layouts/Logo'
-import { NavMenuList } from '@/components/layouts/NavMenu'
+import { Logo } from '@/components/Layouts/Logo'
+import { NavMenuList } from '@/components/Layouts/NavMenu'
+import { ThemeSwitcher } from '@/components/Layouts/ThemeSwitcher'
 import { Button, Navbar, NavbarBrand, NavbarContent, NavbarMenu, NavbarMenuToggle } from '@nextui-org/react'
 import { Github } from 'lucide-react'
-import { ThemeSwitcher } from './ThemeSwitcher'
 
 interface HeaderProps { }
 
