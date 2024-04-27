@@ -1,12 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export const Logo = () => (
-  <Image
-    src="/logo.png"
-    alt="Simon Logo"
-    className="dark:invert"
-    width={24}
-    height={24}
-    priority
-  />
+  <Link href="/">
+    <Image
+      src="/logo.png"
+      alt="Simon Logo"
+      className="dark:invert"
+      width={24}
+      height={24}
+      priority
+    />
+  </Link>
 )
