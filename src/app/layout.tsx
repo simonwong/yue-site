@@ -1,5 +1,4 @@
 "use client";
-// import type { Metadata } from "next";
 
 import { NextUIProvider } from '@nextui-org/react'
 import { ThemeProvider as NextThemesProvider } from "next-themes";
@@ -9,11 +8,6 @@ import Footer from "@/components/layouts/Footer";
 import Rainbow from "@/components/Rainbow";
 
 import "./globals.css";
-
-// export const metadata: Metadata = {
-//   title: "Simon's Blog",
-//   description: "Simon's Blog",
-// };
 
 export default function RootLayout({
   children,
@@ -27,7 +21,7 @@ export default function RootLayout({
           <NextThemesProvider attribute="class">
             <Rainbow />
             <Header />
-            <main className="mx-auto max-w-[1024px] py-12 px-6">
+            <main className="mx-auto max-w-[1024px] min-h-[calc(100vh-64px-150px)] py-12 px-6">
               {children}
             </main>
             <Footer />

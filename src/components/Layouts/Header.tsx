@@ -1,8 +1,8 @@
 import React from 'react'
+import { Logo } from '@/components/layouts/Logo'
 import { NavMenuList } from '@/components/layouts/NavMenu'
 import { Button, Navbar, NavbarBrand, NavbarContent, NavbarMenu, NavbarMenuToggle } from '@nextui-org/react'
 import { Github } from 'lucide-react'
-import Image from 'next/image'
 import { ThemeSwitcher } from './ThemeSwitcher'
 
 interface HeaderProps { }
@@ -17,14 +17,7 @@ const Header: React.FC<HeaderProps> = () => {
 
   const BrandNode = (
     <NavbarBrand>
-      <Image
-        src="/logo.png"
-        alt="Simon Logo"
-        className="dark:invert"
-        width={24}
-        height={24}
-        priority
-      />
+      <Logo />
     </NavbarBrand>
   )
 

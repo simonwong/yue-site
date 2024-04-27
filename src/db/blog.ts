@@ -9,9 +9,12 @@ type Metadata = {
 };
 
 
-function parseFrontmatter(fileContent: string) {
+function parseFrontmatter(fileContent: string, filePath: string) {
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
   let match = frontmatterRegex.exec(fileContent);
+  if (!match) {
+    throw Error(`${filePath} 缺少 meta 信息`)
+  }
   let frontMatterBlock = match![1];
   let content = fileContent.replace(frontmatterRegex, '').trim();
   let frontMatterLines = frontMatterBlock.trim().split('\n');
@@ -33,7 +36,7 @@ function getMDXFiles(dir: string) {
 
 function readMDXFile(filePath: string) {
   let rawContent = fs.readFileSync(filePath, 'utf-8');
-  return parseFrontmatter(rawContent);
+  return parseFrontmatter(rawContent, filePath);
 }
 
 function getMDXData(dir: string) {

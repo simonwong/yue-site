@@ -14,7 +14,7 @@ const Greeting: React.FC<GreetingProps> = () => {
         >
           {greeting} !
         </span>
-        <span> Thank you for visiting!</span>
+        <span> I'm Simon! 👋</span>
       </h3>
     </div>
   )
