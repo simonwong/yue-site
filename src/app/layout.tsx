@@ -4,8 +4,8 @@
 import { NextUIProvider } from '@nextui-org/react'
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
-import Header from "@/components/Layouts/Header";
-import Footer from "@/components/Layouts/Footer";
+import Header from "@/components/layouts/Header";
+import Footer from "@/components/layouts/Footer";
 import Rainbow from "@/components/Rainbow";
 
 import "./globals.css";
